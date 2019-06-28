@@ -8,12 +8,20 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.github.shyamking.deathapp.ui.MainScreenAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.IOException;
 
 import okhttp3.RequestBody;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -34,20 +42,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://data.police.uk/api/").build();
-        UKForces service = retrofit.create(UKForces.class);
 
-        try {
-            ResponseBody responseBody = service.getForces().execute().body();
-            Log.d("SHYAMDEBUG", responseBody.toString());
-        }
-        catch (IOException e) {
-            Log.d("SHYAMDEBUG",e.toString());
-        }
     }
-}
-
-interface UKForces {
-    @GET("forces")
-    Call<ResponseBody> getForces();
 }

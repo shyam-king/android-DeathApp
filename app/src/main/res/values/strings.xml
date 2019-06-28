@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Death App</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="force_name">Name</string>
+    <string name="force_description">Description</string>
+    <string name="force_url">URL</string>
+    <string name="force_engagement_methods">Engagement Methods</string>
 </resources>
