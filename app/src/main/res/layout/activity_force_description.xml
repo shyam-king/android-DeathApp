@@ -63,7 +63,14 @@
            android:id="@+id/force_engagement_list">
 
        </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextViews.Subtitle"
+            android:text="@string/force_telephone"/>
+        <include layout="@layout/card_force_engagement_list"
+            android:id="@+id/force_telephone"
+            />
 
     </LinearLayout>
 </ScrollView>
