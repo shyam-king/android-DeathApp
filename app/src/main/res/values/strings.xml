@@ -5,4 +5,10 @@
     <string name="force_url">URL</string>
     <string name="force_engagement_methods">Engagement Methods</string>
     <string name="force_telephone">Telephone</string>
+    <string name="crime_enterMonth">Month:</string>
+    <string name="crime_enterLat">Latitude:</string>
+    <string name="crime_enterLong">Longitude:</string>
+    <string name="crime_search">Search</string>
+    <string name="crime_enterYear">Year:</string>
+    <string name="crime_addFavourite">Add to favourites</string>
 </resources>

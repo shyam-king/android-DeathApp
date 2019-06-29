@@ -9,11 +9,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
@@ -142,7 +140,7 @@ class ForcesViewHolder extends RecyclerView.ViewHolder {
 
     public ForcesViewHolder(@NonNull final View itemView) {
         super(itemView);
-        name = itemView.findViewById(R.id.forceName);
+        name = itemView.findViewById(R.id.list_item);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,7 +166,7 @@ class ForcesListAdapter extends RecyclerView.Adapter<ForcesViewHolder> {
     @Override
     public ForcesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View v = layoutInflater.inflate(R.layout.card_forces, viewGroup, false);
+        View v = layoutInflater.inflate(R.layout.card_list, viewGroup, false);
         ForcesViewHolder forcesViewHolder = new ForcesViewHolder(v);
         return forcesViewHolder;
     }

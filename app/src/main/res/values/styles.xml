@@ -38,4 +38,12 @@
         <item name="android:layout_margin">8dp</item>
     </style>
 
+    <style name="EditTexts">
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="Buttons">
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
 </resources>

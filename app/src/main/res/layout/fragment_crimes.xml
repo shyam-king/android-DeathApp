@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- MONTH -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crime_enterYear"
+            style="@style/TextViews"/>
+        <EditText
+            android:id="@+id/crimeYear"
+            style="@style/EditTexts"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="YYYY"
+            android:inputType="number"/>
+        <TextView
+            style="@style/TextViews"
+            android:layout_width="wrap_content"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:text="@string/crime_enterMonth" />
+
+        <EditText
+            android:id="@+id/crimeMonth"
+            style="@style/EditTexts"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="MM"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <!-- LATITUDE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crime_enterLat" />
+
+        <EditText
+            android:id="@+id/crimeLatitude"
+            style="@style/EditTexts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberSigned|numberDecimal" />
+    </LinearLayout>
+
+    <!-- LONGITUDE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextViews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crime_enterLong" />
+
+        <EditText
+            android:id="@+id/crimeLongitude"
+            style="@style/EditTexts"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned"/>
+    </LinearLayout>
+
+    <!-- -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/crimeSearchButton"
+        android:text="@string/crime_search"
+        style="@style/Buttons"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/crimeSearchResults">
+
+    </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>
