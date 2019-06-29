@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,6 +41,7 @@ public class CrimesFragment extends Fragment {
     Button searchButton;
     RecyclerView searchResults;
     ArrayList<Crime> data;
+    TextView error;
 
 
     @Nullable
@@ -50,6 +52,7 @@ public class CrimesFragment extends Fragment {
         yearOfCrime = root.findViewById(R.id.crimeYear);
         latitude = root.findViewById(R.id.crimeLatitude);
         longitude = root.findViewById(R.id.crimeLongitude);
+        error = root.findViewById(R.id.crime_error);
 
         searchButton = root.findViewById(R.id.crimeSearchButton);
         searchResults = root.findViewById(R.id.crimeSearchResults);
@@ -64,18 +67,35 @@ public class CrimesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-                //TODO verify input
+                boolean validInput = true;
 
                 String url = "https://data.police.uk/api/crimes-at-location?";
-                url += "date=" + yearOfCrime.getText().toString() + "-" + monthOfCrime.getText().toString();
-                url += "&lat=" + latitude.getText().toString();
-                url += "&lng=" + longitude.getText().toString();
+                if (!yearOfCrime.getText().toString().isEmpty() && !monthOfCrime.getText().toString().isEmpty()) {
+                    String year = yearOfCrime.getText().toString();
+                    String month = monthOfCrime.getText().toString();
 
-                Log.d("SHYAMDEBUG", "url: " + url);
+                    if (month.length() < 2) {
+                        month = "0" + month;
+                    }
+
+                    if (year.length() == 4 && month.length() == 2)
+                        url += "date=" + yearOfCrime.getText().toString() + "-" + monthOfCrime.getText().toString();
+                    else
+                        Toast.makeText(getContext(), "Month invalid, displaying last month records.", Toast.LENGTH_SHORT).show();
+                }
+
+                if (!latitude.getText().toString().isEmpty() && !longitude.getText().toString().isEmpty()) {
+                    url += "&lat=" + latitude.getText().toString();
+                    url += "&lng=" + longitude.getText().toString();
+                }
+                else {
+                    validInput = false;
+                    Toast.makeText(getContext(), "Enter valid latitude and longitude values.", Toast.LENGTH_SHORT).show();
+                }
+
                 JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("SHYAMDEBUG", response.toString());
                         data.clear();
                         try {
                             for (int i = 0; i < response.length(); i++) {
@@ -87,10 +107,17 @@ public class CrimesFragment extends Fragment {
                                 dataElement.setLocationType(iCrime.getString("location_type"));
                                 dataElement.setLocationSubtype(iCrime.getString("location_subtype"));
                                 dataElement.setMonth(iCrime.getString("month"));
+
                                 JSONObject outcome_status = iCrime.getJSONObject("outcome_status");
                                 dataElement.setOutcomeStatus(outcome_status.getString("category") + " (" + outcome_status.getString("date") + ")");
-                                dataElement.setStreet(iCrime.getJSONObject("location").getJSONObject("street").getString("name"));
+
+                                JSONObject location = iCrime.getJSONObject("location");
+                                dataElement.setStreet(location.getJSONObject("street").getString("name"));
+                                dataElement.setLatitude(location.getDouble("latitude"));
+                                dataElement.setLongitude(location.getDouble("longitude"));
+
                                 dataElement.setPersistentId(iCrime.getString("persistent_id"));
+                                dataElement.setId(iCrime.getString("id"));
 
                                 data.add(dataElement);
                             }
@@ -98,6 +125,12 @@ public class CrimesFragment extends Fragment {
                         catch (JSONException e) {
                             Log.d("SHYAMDEBUG", e.toString());
                         }
+                        if (data.size() == 0) {
+                            error.setText(R.string.crime_noMatch);
+                            error.setVisibility(View.VISIBLE);
+                        }
+                        else
+                            error.setVisibility(View.GONE);
                         adapter.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener(){
@@ -108,7 +141,8 @@ public class CrimesFragment extends Fragment {
                     }
                 });
 
-                requestQueue.add(jsonArrayRequest);
+                if (validInput)
+                    requestQueue.add(jsonArrayRequest);
             }
         });
 
@@ -173,7 +207,6 @@ class CrimeListAdapter extends RecyclerView.Adapter<CrimeViewHolder> {
 
     @Override
     public int getItemCount() {
-        Log.d("SHYAMDEBUG", "item count: " + crimes.size());
         return crimes.size();
     }
 }

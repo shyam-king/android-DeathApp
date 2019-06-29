@@ -3,6 +3,8 @@
     <string name="force_name">Name</string>
     <string name="force_description">Description</string>
     <string name="force_url">URL</string>
+    <string name="force_fetchingData">Fetching data</string>
+    <string name="force_noMmatch">No items match your query</string>
     <string name="force_engagement_methods">Engagement Methods</string>
     <string name="force_telephone">Telephone</string>
     <string name="crime_enterMonth">Month:</string>
@@ -11,4 +13,8 @@
     <string name="crime_search">Search</string>
     <string name="crime_enterYear">Year:</string>
     <string name="crime_addFavourite">Add to favourites</string>
+    <string name="crime_deleteFavourite">Remove from favourites</string>
+    <string name="crime_noMatch">No items match your query!</string>
+    <string name="crime_displayOnMap">Display the location on map</string>
+
 </resources>

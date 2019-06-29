@@ -11,14 +11,44 @@ public class Crime implements Serializable {
     String persistent_id;
     String context;
     String outcome_status;
+    String id;
+    double latitude;
+    double longitude;
 
     public Crime() {
 
     }
 
+    public Crime setLatitude(double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public Crime setLongitude(double longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
     public Crime setCategory(String category) {
         this.category = category;
         return this;
+    }
+
+    public Crime setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public Crime setLocationType(String location_type) {

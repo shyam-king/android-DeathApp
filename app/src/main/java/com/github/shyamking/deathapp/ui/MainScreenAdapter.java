@@ -14,15 +14,18 @@ public class MainScreenAdapter extends FragmentPagerAdapter {
         if (i == 0) {
             f = new ForcesFragment();
         }
-        else {
+        else if (i==1) {
             f = new CrimesFragment();
+        }
+        else {
+            f = new FavouritesFragment();
         }
         return f;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     public MainScreenAdapter(FragmentManager fm) {
@@ -32,7 +35,7 @@ public class MainScreenAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String title[] = {"Forces", "Crimes"};
+        String title[] = {"Forces", "Crimes", "Favourites"};
         return title[position];
     }
 }

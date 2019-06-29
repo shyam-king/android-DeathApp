@@ -37,6 +37,7 @@ public class ForcesFragment extends Fragment {
     ArrayList<Force> displaySubset = new ArrayList<>();
     RecyclerView forces_list;
     ForcesListAdapter forcesListAdapter;
+    TextView forcesError;
 
     @Nullable
     @Override
@@ -46,6 +47,7 @@ public class ForcesFragment extends Fragment {
         forcesListAdapter = new ForcesListAdapter(displaySubset, getContext());
         forces_list.setLayoutManager(new LinearLayoutManager(getContext()));
         forces_list.setAdapter(forcesListAdapter);
+        forcesError = v.findViewById(R.id.forces_error);
         setHasOptionsMenu(true);
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
@@ -53,7 +55,8 @@ public class ForcesFragment extends Fragment {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "https://data.police.uk/api/forces", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-               //parsing and storing the response
+                forcesError.setVisibility(View.GONE);
+                //parsing and storing the response
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject obj = response.getJSONObject(i);
@@ -67,7 +70,6 @@ public class ForcesFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                Log.d("SHYAMDEBUG", "Data size: " + data.size());
             }
         }, new Response.ErrorListener() {
             @Override
@@ -100,6 +102,13 @@ public class ForcesFragment extends Fragment {
                     if (f.getName().toLowerCase().contains(newText.toLowerCase())) {
                         displaySubset.add(f);
                     }
+                }
+                if (displaySubset.size() == 0) {
+                    forcesError.setVisibility(View.VISIBLE);
+                    forcesError.setText(R.string.force_noMmatch);
+                }
+                else {
+                    forcesError.setVisibility(View.GONE);
                 }
                 forcesListAdapter.notifyDataSetChanged();
                 return true;
