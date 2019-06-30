@@ -84,13 +84,16 @@
     <!-- -->
 
     <Button
+        android:id="@+id/crimeSearchButton"
+        style="@style/Buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/crimeSearchButton"
-        android:text="@string/crime_search"
-        style="@style/Buttons"
-        />
+        android:paddingLeft="32dp"
+        android:paddingTop="0dp"
+        android:paddingRight="32dp"
+        android:paddingBottom="0dp"
+        android:text="@string/crime_search" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

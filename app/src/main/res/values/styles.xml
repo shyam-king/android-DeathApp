@@ -6,6 +6,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorAppBackground</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:fontFamily">@font/crimsontext_regular</item>
+    </style>
+
+    <style name="ToolbarTitleAppearance">
+        <item name="android:fontFamily">@font/barriecitoregular</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TabTextAppearance" parent="Widget.AppCompat.ActionBar.TabText">
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -13,25 +25,28 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="TextViews">
         <item name="android:padding">8dp</item>
         <item name="android:layout_margin">8dp</item>
+        <item name="android:fontFamily">@font/crimsontext_regular</item>
     </style>
 
     <style name="TextViews.List">
         <item name="android:layout_margin">0dp</item>
+        <item name="android:fontFamily">@font/crimsontext_semibold</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
     </style>
 
     <style name="TextViews.Subtitle">
         <item name="android:gravity">center</item>
         <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">28sp</item>
+        <item name='android:fontFamily'>@font/crimsontext_bold</item>
     </style>
 
     <style name="TextViews.Link">
-        <item name="android:textColor">#000088</item>
+        <item name="android:textColor">#7E7EFF</item>
     </style>
 
     <style name="ImageViews">
@@ -40,10 +55,19 @@
 
     <style name="EditTexts">
         <item name="android:layout_margin">8dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:drawableBottom">@drawable/edittext_bottom</item>
+        <item name="android:background">@color/colorAppBackground</item>
+        <item name='android:textColorHint'>@color/colorCardListSelected</item>
     </style>
 
     <style name="Buttons">
         <item name="android:layout_margin">8dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@drawable/button</item>
     </style>
 
 </resources>

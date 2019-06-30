@@ -1,76 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ForceDescriptionActivity">
-    <LinearLayout
+    tools:context=".ForceDescriptionActivity"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
+        android:layout_weight="0"
+        android:background="@color/colorPrimary"
+        app:titleTextAppearance="@style/ToolbarTitleAppearance"
+        app:title="@string/app_name"
+        android:id="@+id/toolbar"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextViews.Subtitle"
-            android:text="@string/force_name"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextViews"
-            android:id="@+id/force_name"
-            />
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViews.Subtitle"
+                android:text="@string/force_name"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViews"
+                android:id="@+id/force_name"
+                />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextViews.Subtitle"
-            android:text="@string/force_description"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextViews"
-            android:id="@+id/force_description"
-            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViews.Subtitle"
+                android:text="@string/force_description"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViews"
+                android:id="@+id/force_description"
+                />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextViews.Subtitle"
-            android:text="@string/force_url"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextViews.Link"
-            android:id="@+id/force_url"
-            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViews.Subtitle"
+                android:text="@string/force_url"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViews.Link"
+                android:id="@+id/force_url"
+                />
 
-        <!-- Engagement links-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextViews.Subtitle"
-            android:text="@string/force_engagement_methods"
-            />
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           android:id="@+id/force_engagement_list">
+            <!-- Engagement links-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViews.Subtitle"
+                android:text="@string/force_engagement_methods"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/force_engagement_list">
 
-       </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextViews.Subtitle"
-            android:text="@string/force_telephone"/>
-        <include layout="@layout/card_force_engagement_list"
-            android:id="@+id/force_telephone"
-            />
-
-    </LinearLayout>
-</ScrollView>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViews.Subtitle"
+                android:text="@string/force_telephone"/>
+            <include layout="@layout/card_force_engagement_list"
+                android:id="@+id/force_telephone"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 
 public class MainScreenAdapter extends FragmentPagerAdapter {
@@ -36,6 +37,7 @@ public class MainScreenAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         String title[] = {"Forces", "Crimes", "Favourites"};
+        Log.d("SHYAMDEBUG", title[position]);
         return title[position];
     }
 }

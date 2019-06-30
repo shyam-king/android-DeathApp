@@ -5,6 +5,7 @@
     <item
         android:id="@+id/forces_search"
         android:icon="@drawable/ic_search_black_24dp"
+        android:iconTint="@color/colorAccent"
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always"/>

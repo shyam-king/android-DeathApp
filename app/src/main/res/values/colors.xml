@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimaryDark">#500000</color>
+    <color name="colorPrimary">#720208</color>
+    <color name="colorAccent">#D87D1B</color>
+    <color name="colorAppBackground">#000000</color>
+    <color name="colorText">#ffffffff</color>
+    <color name="colorEditText">#80D87D1B</color>
+    <color name="colorCardListSelected">#7ED87D1B</color>
 </resources>
