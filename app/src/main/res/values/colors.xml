@@ -7,4 +7,5 @@
     <color name="colorText">#ffffffff</color>
     <color name="colorEditText">#80D87D1B</color>
     <color name="colorCardListSelected">#7ED87D1B</color>
+    <color name="colorButtonDisabled">#59FFFFFF</color>
 </resources>

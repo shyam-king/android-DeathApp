@@ -66,6 +66,8 @@ public class CrimesFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                searchButton.setEnabled(false);
                 RequestQueue requestQueue = Volley.newRequestQueue(getContext());
                 boolean validInput = true;
 
@@ -97,6 +99,8 @@ public class CrimesFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         data.clear();
+                        searchButton.setEnabled(true);
+                        Log.d("SHYAMDEBUG", response.toString());
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 Crime dataElement = new Crime();
@@ -108,13 +112,20 @@ public class CrimesFragment extends Fragment {
                                 dataElement.setLocationSubtype(iCrime.getString("location_subtype"));
                                 dataElement.setMonth(iCrime.getString("month"));
 
-                                JSONObject outcome_status = iCrime.getJSONObject("outcome_status");
-                                dataElement.setOutcomeStatus(outcome_status.getString("category") + " (" + outcome_status.getString("date") + ")");
+                                JSONObject outcome_status;
 
-                                JSONObject location = iCrime.getJSONObject("location");
-                                dataElement.setStreet(location.getJSONObject("street").getString("name"));
-                                dataElement.setLatitude(location.getDouble("latitude"));
-                                dataElement.setLongitude(location.getDouble("longitude"));
+                                if (!iCrime.getString("outcome_status").equals("null")) {
+                                    outcome_status = iCrime.getJSONObject("outcome_status");
+                                    dataElement.setOutcomeStatus(outcome_status.getString("category") + " (" + outcome_status.getString("date") + ")");
+                                }
+
+                                JSONObject location;
+                                if (!iCrime.getString("location").equals("null")) {
+                                    location = iCrime.getJSONObject("location");
+                                    dataElement.setStreet(location.getJSONObject("street").getString("name"));
+                                    dataElement.setLatitude(location.getDouble("latitude"));
+                                    dataElement.setLongitude(location.getDouble("longitude"));
+                                }
 
                                 dataElement.setPersistentId(iCrime.getString("persistent_id"));
                                 dataElement.setId(iCrime.getString("id"));
@@ -143,6 +154,8 @@ public class CrimesFragment extends Fragment {
 
                 if (validInput)
                     requestQueue.add(jsonArrayRequest);
+                else
+                    searchButton.setEnabled(true);
             }
         });
 
