@@ -99,7 +99,7 @@ public class ForcesFragment extends Fragment {
             public boolean onQueryTextChange(String newText) {
                 displaySubset.clear();
                 for (Force f : data) {
-                    if (f.getName().toLowerCase().contains(newText.toLowerCase())) {
+                    if (f.getName().toLowerCase().startsWith(newText.toLowerCase())) {
                         displaySubset.add(f);
                     }
                 }
